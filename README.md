@@ -8,6 +8,7 @@ A battery included docker image for Openresty lua module developers!
 
 
 ## Available Versions:
+[DockerHub](https://hub.docker.com/r/skylothar/openresty-testsuite/)
 - 1.9.7.4 (latest)
 
 ## Usage
@@ -30,5 +31,5 @@ services:
       - '-c'
       - 'luarocks make YOUR-ROCKSPEC && prove -r t'
 ```
-- Open your favourite editor to change YOUR-ROCKSPEC to real path or replace command with what ever your test scripts is.
+- Open your favourite editor to change `YOUR-ROCKSPEC` to real path or replace command with what ever your test scripts is.
 - Run `docker-compose up`

@@ -32,11 +32,10 @@ RUN tar xzf ${OPENRESTY_FILE} \
   && rm ${OPENRESTY_FILE} \
   && cd * \
   && ./configure --with-pcre-jit \
-  && make && make install \
+  && make && make install
 
-
-WORKDIR /tests
+WORKDIR /
 RUN rm -rf /var/lib/apt/lists; \
-  rm /tmp/* ; \
+  rm -rf /tmp/* ; \
   apt-get autoremove -y ; \
   apt-get clean
