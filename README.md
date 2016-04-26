@@ -6,7 +6,6 @@ A battery included docker image for Openresty lua module developers!
 - [Test::Nginx](https://github.com/openresty/test-nginx)
 - [CPANm](https://cpanmin.us/)
 
-
 ## Available Versions:
 [DockerHub](https://hub.docker.com/r/skylothar/openresty-testsuite/)
 - 1.9.7.4 (latest)
@@ -19,17 +18,15 @@ A battery included docker image for Openresty lua module developers!
 ### Docker Compose Sample
 - Save following content as `docker-compose.yml`
 ```yaml
-version: '2'
-services:
-  openresty:
-    image: skylothar/openresty-testsuite:latest
-    volumes:
-      - .:/tests
-    working_dir: /tests
-    command:
-      - '/bin/sh'
-      - '-c'
-      - 'luarocks make YOUR-ROCKSPEC && prove -r t'
+openresty:
+  image: skylothar/openresty-testsuite:latest
+  volumes:
+    - .:/tests
+  working_dir: /tests
+  command:
+    - '/bin/sh'
+    - '-c'
+    - 'luarocks make YOUR-ROCKSPEC && prove -r t'
 ```
 - Open your favourite editor to change `YOUR-ROCKSPEC` to real path or replace command with what ever your test scripts is.
 - Run `docker-compose up`
