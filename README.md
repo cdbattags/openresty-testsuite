@@ -8,7 +8,7 @@ A battery included docker image for Openresty lua module developers!
 
 ## Available Versions:
 [DockerHub](https://hub.docker.com/r/skylothar/openresty-testsuite/)
-- 1.9.7.4 (latest)
+- 1.13.6.2 (latest)
 
 ## Usage
 1. Install Docker Engine

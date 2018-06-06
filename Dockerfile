@@ -21,7 +21,7 @@ RUN cp $LUAROCK_CONF $LUAROCK_CONF.bak \
 # install perl openresty test kit
 RUN cpanm install Test::Nginx
 
-ARG OPENRESTY_VERSION=1.9.7.4
+ARG OPENRESTY_VERSION=1.13.6.2
 ENV OPENRESTY_FILE openresty-${OPENRESTY_VERSION}.tar.gz
 
 # install openresty
