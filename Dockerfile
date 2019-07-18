@@ -1,4 +1,4 @@
-FROM openresty/openresty:xenial
+FROM openresty/openresty:bionic
 
 ARG http_proxy
 ARG https_proxy
