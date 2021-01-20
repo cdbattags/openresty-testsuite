@@ -1,4 +1,4 @@
-FROM openresty/openresty:1.15.8.3-bionic
+FROM openresty/openresty:1.19.3.1-bionic
 
 ARG http_proxy
 ARG https_proxy
