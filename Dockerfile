@@ -1,4 +1,4 @@
-FROM openresty/openresty:bionic
+FROM openresty/openresty:1.15.8.3-bionic
 
 ARG http_proxy
 ARG https_proxy
@@ -14,6 +14,4 @@ RUN apt-get update -y \
 # install perl openresty test kit
 RUN cpan -f -i Test::Nginx
 
-
 WORKDIR /
-
