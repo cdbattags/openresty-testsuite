@@ -11,7 +11,8 @@ A batteries included docker image for Openresty lua module developers!
 ## Available Versions:
 
 [DockerHub](https://hub.docker.com/r/cdbattags/openresty-testsuite/)
-- 1.15.8.1 (latest)
+- 1.19.3.1 (latest)
+- 1.15.8.3
 
 ## Usage
 
