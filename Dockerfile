@@ -1,17 +1,37 @@
-FROM openresty/openresty:1.19.3.1-bionic
+FROM openresty/openresty:1.27.1.2-0-bookworm-fat
 
-ARG http_proxy
-ARG https_proxy
+ARG LUAROCKS_VERSION=3.13.0
 
-ENV PATH $PREFIX/openresty/nginx/sbin:$PATH
+ENV PATH="/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin:${PATH}"
 
-# install basic dependencies
-RUN apt-get update -y \
-  && apt-get install -y --no-install-recommends \
-    libreadline-dev libncurses5-dev libpcre3-dev libssl-dev \
-    perl make build-essential unzip cpanminus
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        cpanminus \
+        curl \
+        libpcre3-dev \
+        libssl-dev \
+        make \
+        perl \
+        unzip \
+        wget \
+    && cpanm --notest Test::Nginx \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# install perl openresty test kit
-RUN cpan -f -i Test::Nginx
+RUN cd /tmp \
+    && curl -fSL "https://luarocks.github.io/luarocks/releases/luarocks-${LUAROCKS_VERSION}.tar.gz" \
+        -o "luarocks-${LUAROCKS_VERSION}.tar.gz" \
+    && tar xzf "luarocks-${LUAROCKS_VERSION}.tar.gz" \
+    && cd "luarocks-${LUAROCKS_VERSION}" \
+    && ./configure \
+        --prefix=/usr/local/openresty/luajit \
+        --with-lua=/usr/local/openresty/luajit \
+        --lua-suffix=jit \
+        --with-lua-include=/usr/local/openresty/luajit/include/luajit-2.1 \
+    && make build \
+    && make install \
+    && cd /tmp \
+    && rm -rf "luarocks-${LUAROCKS_VERSION}" "luarocks-${LUAROCKS_VERSION}.tar.gz"
 
 WORKDIR /
