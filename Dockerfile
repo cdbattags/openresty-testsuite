@@ -34,4 +34,11 @@ RUN cd /tmp \
     && cd /tmp \
     && rm -rf "luarocks-${LUAROCKS_VERSION}" "luarocks-${LUAROCKS_VERSION}.tar.gz"
 
+ARG LUA_RESTY_OPENSSL_VERSION=1.7.1-1
+
+RUN luarocks install \
+        --server=https://luarocks.org/manifests/fffonion \
+        lua-resty-openssl ${LUA_RESTY_OPENSSL_VERSION} \
+    && luarocks list lua-resty-openssl
+
 WORKDIR /
